@@ -48,6 +48,7 @@ def get_single_athlete_data(url):
                 result_metric = result.a.text.strip()
 
                 dc = DataCard(athlete_name, event, result_metric, meet, date)
+                dc.format()
 
                 data.append(dc.to_dict())
 
@@ -57,6 +58,5 @@ def get_single_athlete_data(url):
     return data
 
 
-print(get_single_athlete_data("https://www.tfrrs.org/athletes/7453592/SE_Missouri/Shea_Degraaf"))
 
 
