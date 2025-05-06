@@ -13,18 +13,25 @@ def get_rolling_avg_n(data, n):
 
 
 def plot_event_data(event, data):
-    pass
 
-def clean_pv_data(heights):
-    for i in range(len(heights)):
-        height = heights[i]
+    max_result = np.max(data)
 
-        height = height.replace("m", "")
-        if height == "NH":
-            height= 0.0
+    plt.title(event)
+    plt.plot(np.arange(len(data)),data)
+    plt.ylim(0.8 *max_result, 1.1*max_result)
+    plt.show()
 
-        heights[i] = float(height)
 
-    return heights
+# def clean_pv_data(heights):
+#     for i in range(len(heights)):
+#         height = heights[i]
+
+#         height = height.replace("m", "")
+#         if height == "NH":
+#             height= 0.0
+
+#         heights[i] = float(height)
+
+#     return heights
 
 

@@ -1,6 +1,8 @@
 from scrape_athlete import get_single_athlete_data
+from utils import plot_event_data
 
-data = get_single_athlete_data("https://www.tfrrs.org/athletes/7453592/SE_Missouri/Shea_Degraaf")
+link = "https://www.tfrrs.org/athletes/7453592/SE_Missouri/Shea_Degraaf"
+data = get_single_athlete_data(link)
 data = list(reversed(data))
 
 
@@ -14,10 +16,10 @@ for data_card in data:
     else:
         event_history[event].append(data_card['result'])
 
+for ev in event_history:
+    print(ev,event_history[ev])
 
 for ev in event_history:
-    print(ev ,  " " , event_history[ev])
+    plot_event_data(ev,event_history[ev])
 
-# print(event_history['PV'])
 
-# plot_pv_data(event_history['PV'])

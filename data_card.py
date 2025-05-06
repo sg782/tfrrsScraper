@@ -33,7 +33,7 @@ class DataCard:
 
         self.result = self.result.replace("m","")
 
-        if(self.result in ['NH', 'DNS', 'DNF' ,'FOUL']): # is this list exhaustive?
+        if(self.result in ['NH', 'DNS', 'DNF' ,'FOUL', 'FS', 'DQ']): # is this list exhaustive?
             self.result = '0'
 
         if(":" in self.result):
@@ -43,10 +43,10 @@ class DataCard:
             minutes = float(minutes)
             seconds = float(seconds)
 
-            time = minutes + seconds / 60.
-
-            
+            time = minutes + seconds / 60.          
             rounded_time = round(time,decimal_accuracy)
 
-
             self.result = rounded_time
+
+
+        self.result = float(self.result)
