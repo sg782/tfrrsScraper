@@ -1,7 +1,7 @@
 from scrape_athlete import get_single_athlete_data
 from utils import plot_event_data
 
-link = "https://www.tfrrs.org/athletes/7453592/SE_Missouri/Shea_Degraaf"
+link = "https://www.tfrrs.org/athletes/8318488/SE_Missouri/Sullivan_Gleason.html"
 data = get_single_athlete_data(link)
 data = list(reversed(data))
 
