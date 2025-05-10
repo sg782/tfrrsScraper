@@ -4,17 +4,18 @@ from bs4 import BeautifulSoup
 import numpy as np
 
 from data_card import DataCard
+from scrape_athlete import get_single_athlete_data
 
 import matplotlib.pyplot as plt
 
 
-def get_roster():
+
+def get_roster_links(url):
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
     }
 
-    url = "https://www.tfrrs.org/teams/MO_college_m_SE_Missouri.html"
 
     results = requests.get(url, headers=headers)
     soup = BeautifulSoup(results.text, "html.parser")
@@ -26,15 +27,27 @@ def get_roster():
 
     rows = roster_table.select('tr')
 
-    for row in rows:
+    links = []
+    base_url = "https://www.tfrrs.org"
 
-        
+    for row in rows:
         athlete_link = row.select_one('a')
 
         if athlete_link is not None:
-            print(athlete_link['href'])
+            extension = athlete_link['href']
 
-        print("\n\n\n")
-    
+            links.append(base_url + extension)
 
-get_roster()
+    return links
+
+team_link = "https://www.tfrrs.org/teams/MO_college_m_SE_Missouri.html"
+roster_links = get_roster_links(team_link)
+
+
+athlete_data_list = []
+for link in roster_links:
+    athlete_data = get_single_athlete_data(link)
+    athlete_data_list.append(athlete_data)
+
+for d in athlete_data_list:
+    print(d)

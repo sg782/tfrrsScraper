@@ -26,6 +26,8 @@ def get_single_athlete_data(url):
     data = []
 
     if meet_results_div:
+
+        # some results are metric, some are imperial, either way, both are supported, just not always in the same column.
         rows = meet_results_div.select("table")
 
         for row in rows:
