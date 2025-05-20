@@ -2,10 +2,14 @@ from scrape_athlete import get_single_athlete_data
 from utils import plot_event_data
 from scrape_team import get_team_results
 
-link = "https://www.tfrrs.org/athletes/7453592"
-data = get_single_athlete_data(link)
+link = "https://www.tfrrs.org/athletes/8318488/SE_Missouri/Sullivan_Gleason.html"
+athlete = get_single_athlete_data(link)
 
-# print(data.get_data_cards_by_event())
+plot_event_data(athlete, 'PV')
+
+# print(data.get_data_cards_by_event(True))
+
+
 # # data = list(reversed(data))
 
 

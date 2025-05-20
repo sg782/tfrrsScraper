@@ -12,14 +12,37 @@ def get_rolling_avg_n(data, n):
     return out
 
 
-def plot_event_data(event, data):
+def plot_event_data(athlete, event):
 
-    max_result = np.max(data)
+    # maybe add param to use date or meet number
 
-    plt.title(event)
-    plt.plot(np.arange(len(data)),data)
+    # data is a DataCard object
+    event_data = athlete.get_data_cards_by_event(event)[event]
+
+
+
+    dates = [data['date'].timestamp() for data in event_data]
+    results = [data['result'] for data in event_data]
+
+    max_result = np.max(results)
+
+    plt.plot(dates,results)
     plt.ylim(0.8 *max_result, 1.1*max_result)
     plt.show()
+
+
+
+    # print(event_data)
+
+    # max_result = np.max(data)
+
+    # plt.title(event)
+
+    # data
+
+    # plt.plot(np.arange(len(data)),data)
+    # plt.ylim(0.8 *max_result, 1.1*max_result)
+    # plt.show()
 
 
 # def clean_pv_data(heights):

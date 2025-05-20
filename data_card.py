@@ -43,8 +43,6 @@ class DataCard:
             self.date = datetime.datetime(1971,1,1)
 
 
-
-
         # what if a meet has multiple years in it (happened over new years?)
 
 
