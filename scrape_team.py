@@ -40,14 +40,15 @@ def get_roster_links(url):
 
     return links
 
-team_link = "https://www.tfrrs.org/teams/MO_college_m_SE_Missouri.html"
-roster_links = get_roster_links(team_link)
 
 
-athlete_data_list = []
-for link in roster_links:
-    athlete_data = get_single_athlete_data(link)
-    athlete_data_list.append(athlete_data)
+def get_team_results(team_link):
+    athlete_data_list = []
 
-for d in athlete_data_list:
-    print(d)
+    roster_links = get_roster_links(team_link)
+
+    for link in roster_links:
+        athlete_data = get_single_athlete_data(link)
+        athlete_data_list.append(athlete_data)
+
+    return athlete_data_list
